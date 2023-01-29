@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Action"
+  },
+  {
+    "id": 2,
+    "title": "Comedy"
+  },
+  {
+    "id": 3,
+    "title": "Drama"
+  },
+  {
+    "id": 4,
+    "title": "Fantasy"
+  },
+  {
+    "id": 5,
+    "title": "Horror"
+  },
+  {
+    "id": 6,
+    "title": "Mistery"
+  },
+  {
+    "id": 7,
+    "title": "Thriller"
+  },
+  {
+    "id": 8,
+    "title": "Western"
+  },
+  {
+    "id": 9,
+    "title": "Adventure"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "genres": ["action", "comedy"],
+    "rating": 7.2,
+    "picture": "http://localhost:5173/movies-posters/Hunters%20II.jpeg",
+    "title": "Hunters II",
+    "year": "2016"
+  },
+  {
+    "id": 2,
+    "genres": ["comedy"],
+    "title": "Jack Ryan",
+    "picture": "http://localhost:5173/movies-posters/Jack%20Ryan.jpeg",
+    "rating": 8.1,
+    "year": "2017"
+  },
+  {
+    "id": 3,
+    "genres": ["action"],
+    "rating": 5.8,
+    "picture": "http://localhost:5173/movies-posters/The%20Rig.jpeg",
+    "title": "The Rig",
+    "year": "2018"
+  },
+  {
+    "id": 4,
+    "genres": ["drama"],
+    "rating": 8.7,
+    "picture": "http://localhost:5173/movies-posters/The%20Boys.jpeg",
+    "title": "The Boys",
+    "year": "2019"
+  },
+  {
+    "id": 5,
+    "genres": ["fantasy"],
+    "rating": 8.4,
+    "picture": "http://localhost:5173/movies-posters/Supernatural.jpeg",
+    "title": "Supernatural",
+    "year": "2020"
+  },
+  {
+    "id": 6,
+    "genres": ["action"],
+    "rating": 7.5,
+    "picture": "http://localhost:5173/movies-posters/Smallville.jpeg",
+    "title": "Smallville",
+    "year": "2021"
+  },
+  {
+    "id": 7,
+    "genres": ["action"],
+    "rating": 8.1,
+    "picture": "http://localhost:5173/movies-posters/Reacher.jpeg",
+    "title": "Reacher",
+    "year": "2022"
+  },
+  {
+    "id": 8,
+    "genres": ["action"],
+    "rating": 8.1,
+    "picture": "http://localhost:5173/movies-posters/ChicagoFire.jpeg",
+    "title": "Chicago Fire",
+    "year": "2023"
+  },
+  {
+    "id": 9,
+    "genres": ["action", "adventure", "drama"],
+    "rating": 9.3,
+    "picture": "http://localhost:5173/movies-posters/The Last Of Us.jpeg",
+    "title": "The Last of Us",
+    "year": "2023"
+  }
+]
