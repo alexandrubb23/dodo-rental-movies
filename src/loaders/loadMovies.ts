@@ -12,9 +12,9 @@ type RequestUrlType = {
   url: string;
 };
 
-interface RequestInterface {
+type RequestType = {
   request: RequestUrlType;
-}
+};
 
 type LoadMoviesByGenreType = {
   params: ParamGenreType;
@@ -42,7 +42,7 @@ const loadMoviesFn = async (
   return { movies };
 };
 
-export const loadAllMovies = async ({ request }: RequestInterface) => {
+export const loadAllMovies = async ({ request }: RequestType) => {
   return loadMoviesFn(getAllMovies, request);
 };
 
