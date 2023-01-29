@@ -49,9 +49,15 @@ button {
   line-height: 1.5;
   margin: 0;
 }
+
 button {
   color: #3992ff;
   font-weight: 500;
+}
+
+a {
+  color: rgb(87 153 239);
+  text-decoration: none;
 }
 
 textarea:hover,
@@ -70,20 +76,24 @@ button:active {
   align-items: flex-start;
   gap: 1rem;
 }
+
 #contact h1 form {
   display: flex;
   align-items: center;
   margin-top: 0.25rem;
 }
+
 #contact h1 form button {
   box-shadow: none;
   font-size: 1.5rem;
   font-weight: 400;
   padding: 0;
 }
+
 #contact h1 form button[value='true'] {
   color: #a4a4a4;
 }
+
 #contact h1 form button[value='true']:hover,
 #contact h1 form button[value='false'] {
   color: #eeb004;
@@ -533,6 +543,7 @@ hgroup {
   padding-top: 2px;
 }
 
+/** Loader */
 .loader-dual__ring {
   display: inline-block;
   width: 80px;
@@ -565,4 +576,11 @@ hgroup {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/** SVG */
+.icon-github {
+  fill: #cccccc;
+  vertical-align: bottom;
+  margin-right: 0.5rem;
 }
