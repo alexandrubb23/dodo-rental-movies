@@ -70,5 +70,29 @@
     "picture": "http://localhost:5173/movies-posters/The Last Of Us.jpeg",
     "title": "The Last of Us",
     "year": "2023"
+  },
+  {
+    "id": 10,
+    "genres": ["action", "drama", "history"],
+    "rating": 7.8,
+    "picture": "http://localhost:5173/movies-posters/MissionMajnu.jpeg",
+    "title": "Mission Majnu",
+    "year": "2023"
+  },
+  {
+    "id": 11,
+    "genres": ["drama", "mistery", "romance"],
+    "rating": 7.8,
+    "picture": "http://localhost:5173/movies-posters/Freddy.jpeg",
+    "title": "Freddy",
+    "year": "2024"
+  },
+  {
+    "id": 12,
+    "genres": ["comedy", "horror", "thriller"],
+    "rating": 7.8,
+    "picture": "http://localhost:5173/movies-posters/Bhediya.jpeg",
+    "title": "Bhediya",
+    "year": "2024"
   }
 ]
