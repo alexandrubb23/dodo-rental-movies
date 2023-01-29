@@ -34,5 +34,13 @@
   {
     "id": 9,
     "title": "Adventure"
+  },
+  {
+    "id": 10,
+    "title": "History"
+  },
+  {
+    "id": 11,
+    "title": "Romance"
   }
 ]
