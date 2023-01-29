@@ -1,9 +1,10 @@
 import { useLoaderData, useParams } from 'react-router-dom';
-import Movies from '../components/Movies/Movies';
-import SortMovies from '../components/Movies/SortMovies';
 
+import { HeadingPageTitle } from '../components/common';
 import { MoviesInterface } from '../models/interfaces';
 import { upperFirst } from '../utils/strings';
+import Movies from '../components/Movies/Movies';
+import SortMovies from '../components/Movies/SortMovies';
 
 const MoviesRoute = () => {
   const { movies } = useLoaderData() as MoviesInterface;
@@ -13,9 +14,7 @@ const MoviesRoute = () => {
 
   return (
     <>
-      <hgroup>
-        <h1 className='movies-genre__text'>{title}</h1>
-      </hgroup>
+      <HeadingPageTitle title={title} />
       {movies.length > 1 && <SortMovies />}
       <Movies movies={movies} />
     </>
