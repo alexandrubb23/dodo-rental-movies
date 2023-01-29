@@ -1,8 +1,8 @@
 import { useLoaderData, Outlet } from 'react-router-dom';
-import { GitHubIcon } from '../assets/icons';
 
 import { Genres } from '../components/Genres';
 import { GenresType } from '../models/types';
+import { GithubRepo } from '../components/common';
 
 const RootRoute = () => {
   const { genres } = useLoaderData() as GenresType;
@@ -18,10 +18,7 @@ const RootRoute = () => {
           </ul>
         </nav>
         <div id='infos'>
-          <a href='https://github.com/alexandrubb23/dodo-rental-movies'>
-            <GitHubIcon />
-            Github
-          </a>
+          <GithubRepo />
         </div>
       </div>
       <div id='content'>
