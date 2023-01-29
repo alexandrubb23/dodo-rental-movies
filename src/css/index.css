@@ -107,7 +107,7 @@ form[action$='destroy'] button {
 
 #root {
   display: flex;
-  min-height: 100%;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -256,7 +256,7 @@ i {
   width: 100%;
 }
 
-#detail.loading {
+#content.loading {
   opacity: 0.25;
   transition: opacity 200ms;
   transition-delay: 200ms;
@@ -409,8 +409,9 @@ hgroup {
 
 #content {
   background-color: #000000;
-  width: 100%;
   padding: 1rem 2rem;
+  position: relative;
+  width: 100%;
 }
 
 #error-page {
@@ -530,4 +531,38 @@ hgroup {
   color: #676666;
   flex: 1;
   padding-top: 2px;
+}
+
+.loader-dual__ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+.loader-dual__ring:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 5% auto;
+  border-radius: 50%;
+  border: 6px solid #ffffff;
+  border-color: var(--yellor-color) transparent var(--yellor-color) transparent;
+  animation: loader-dual__ring 1.2s linear infinite;
+}
+
+@keyframes loader-dual__ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
