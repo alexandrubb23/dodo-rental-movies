@@ -16,7 +16,7 @@
 
 # Movie Rental Repository
 
-This repository is a movie rental dummy platform where users can browse and rent movies. Please note that, this is not a real APP! It is just a dummy app which show us how we can arhitecture (structure an app files and folders) an APP using React Idiomatic strategy.
+This repository is a movie rental dummy platform where users can browse and rent movies. Please be aware that this is a demonstration app, designed to display the proper architecture and file/folder structure of a React application using idiomatic best practices.
 
 React idiomatic refers to a set of best practices and conventions for writing clean and maintainable code when developing applications using the React JavaScript library. It involves following a consistent code style, using appropriate React patterns, and writing modular and reusable components. The goal of idiomatic React is to make it easier to understand and maintain the codebase, and to ensure a high-quality and scalable application:
 
