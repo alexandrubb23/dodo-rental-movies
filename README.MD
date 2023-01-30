@@ -14,7 +14,7 @@
 </p>
 <br/>
 
-# Movie Rental Repository
+# DODO (my son 💖) - Movie Rental
 
 This repository is a movie rental dummy platform where users can browse and rent movies. Please be aware that this is a demonstration app, designed to display the proper architecture and file/folder structure of a React application using idiomatic best practices.
 
@@ -43,7 +43,7 @@ This app is intended to showcase my ability to interpret a brief, solve problems
 
 # Technologies
 
-- [ViteJS](https://vitejs.dev/))
+- [ViteJS](https://vitejs.dev/)
 - [ReactJS](https://reactjs.org/)
 - [React Router Dom v6.8.0](https://reactrouter.com/en/main/hooks/use-search-params)
 
