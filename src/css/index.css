@@ -626,5 +626,5 @@ hgroup {
 .pagination .page-item:hover {
   background-color: var(--grey-bg-color);
   color: var(--yellor-color);
-  border-color: #313131;
+  border-color: #252525;
 }
