@@ -36,16 +36,16 @@ This app is intended to showcase my ability to interpret a brief, solve problems
 
 # Features
 
-- List of all movies
-- Filter movies by genre
-- Paginate movies - TODO: To be implemented
-- Sorting movies by `title`, `year` or `rating` (default asc)
-- Sorting movies direction (`asc`, `desc`) - TODO: To be implemented
+- Comprehensive movie database.
+- Genre-based movie search.
+- Pagination for easier browsing.
+- Sort movies by title, year, or rating (default: ascending order).
 
 # Technologies
 
-- ViteJS ([ReactJS](https://google.com))
-- React Router Dom v6.8.0
+- [ViteJS](https://vitejs.dev/))
+- [ReactJS](https://reactjs.org/)
+- [React Router Dom v6.8.0](https://reactrouter.com/en/main/hooks/use-search-params)
 
 # Requirements
 
