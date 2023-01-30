@@ -1,8 +1,14 @@
 import { useNavigation } from 'react-router-dom';
-import { MoviesInterface } from '../../models/interfaces';
-import MovieCard from './MovieCard';
 
-const Movies = ({ movies }: MoviesInterface) => {
+import { MOVIES_PAGE_SIZE } from '../../constants';
+import { MoviesInterface } from '../../models/interfaces';
+import MoviesList from './MoviesList';
+import Pagination from '../common/Pagination';
+import Sorting from '../common/Sorting';
+
+const sortByFields = ['title', 'year', 'rating'];
+
+const Movies = ({ movies, totalMoviesCount }: MoviesInterface) => {
   const navigation = useNavigation();
 
   if (movies.length === 0) {
@@ -15,11 +21,14 @@ const Movies = ({ movies }: MoviesInterface) => {
 
   return (
     <>
+      {movies.length > 1 && <Sorting data={sortByFields} />}
       <div className='movies-container'>
-        {movies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        <MoviesList movies={movies} />
       </div>
+      <Pagination
+        itemsCount={totalMoviesCount as number}
+        pageSize={MOVIES_PAGE_SIZE}
+      />
     </>
   );
 };

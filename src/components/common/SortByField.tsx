@@ -1,14 +1,13 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { UnorderedListDataInterface } from '../../models/interfaces';
 import { URL_QUERY_KEYS } from '../../constants';
-import { useGetQueryParam } from '../../hooks';
 import UnorderedList from './UnorderedList';
 
 const SortByField = ({ data }: UnorderedListDataInterface) => {
   const location = useLocation();
   const navigation = useNavigate();
-  const queryParams = useGetQueryParam();
+  const [queryParams] = useSearchParams();
 
   const { SORT_BY } = URL_QUERY_KEYS;
 
@@ -18,7 +17,7 @@ const SortByField = ({ data }: UnorderedListDataInterface) => {
 
   return (
     <UnorderedList
-      activeItem={queryParams.get(SORT_BY)}
+      activeItem={queryParams.get(SORT_BY) ?? ''}
       data={data}
       onItemClick={appendSortByToCurrentUrl}
     />

@@ -500,13 +500,13 @@ hgroup {
 }
 
 /** Sorting */
-#sort-movies {
+#sorting-container {
   display: flex;
   flex-direction: row;
   width: 270px;
 }
 
-#sort-movies ul {
+#sorting-container ul {
   display: flex;
   align-items: center;
   list-style-type: none;
@@ -516,7 +516,7 @@ hgroup {
   margin: 0 0 30px 0;
 }
 
-#sort-movies ul li {
+#sorting-container ul li {
   background-color: hwb(0 100% 0% / 0.08);
   border-radius: 4px;
   color: #8a8a8a;
@@ -531,8 +531,8 @@ hgroup {
   transition: all 0.3s ease-in-out;
 }
 
-#sort-movies ul li:hover,
-#sort-movies ul li.active {
+#sorting-container ul li:hover,
+#sorting-container ul li.active {
   background-color: hwb(0 100% 0% / 0.19);
   color: var(--yellor-color);
 }
@@ -583,4 +583,48 @@ hgroup {
   fill: #cccccc;
   vertical-align: bottom;
   margin-right: 0.5rem;
+}
+
+/** Pagination */
+.pagination {
+  padding: 30px 0;
+  display: flex;
+}
+
+.pagination ul {
+  display: flex;
+  gap: 5px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 18px;
+  color: #cccccc;
+}
+
+.pagination a {
+  width: 20px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+  text-align: center;
+  margin: auto 5px;
+}
+
+.pagination .page-item {
+  border: 1px solid;
+  border-color: var(--gre-bg-color);
+}
+
+.pagination .page-item.active {
+  border-color: var(--yellor-color);
+}
+
+.pagination .page-item:hover {
+  background-color: var(--grey-bg-color);
+  color: var(--yellor-color);
+  border-color: #313131;
 }

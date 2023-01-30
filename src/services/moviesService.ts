@@ -10,7 +10,7 @@ import http from './httpService';
 const movieIncludesGenre = (genre: string) => (movie: Movie) =>
   movie.genres.includes(genre);
 
-const sortMovies = (
+const sortMoviesByFieldName = (
   movies: Movie[],
   sortByFieldName?: string | null
 ): Movie[] => {
@@ -24,10 +24,11 @@ const sortMovies = (
 export const getAllMovies = async ({ sortByFieldName }: GetAllMovies) => {
   await fakeNetwork(`getMovies:${sortByFieldName}`);
 
+  // TODO: Can be improved by getting from the cache.
   const { data } = await http.get('movies.json');
   let movies = data as Movie[];
 
-  const sortedMovies = sortMovies(movies, sortByFieldName);
+  const sortedMovies = sortMoviesByFieldName(movies, sortByFieldName);
 
   await saveMoviesInCache(sortedMovies);
 
@@ -44,7 +45,7 @@ export const getMoviesByGenre = async ({
   if (!movies) {
     movies = await getAllMovies({ sortByFieldName });
   } else {
-    movies = sortMovies(movies, sortByFieldName);
+    movies = sortMoviesByFieldName(movies, sortByFieldName);
   }
 
   return movies.filter(movieIncludesGenre(genre));

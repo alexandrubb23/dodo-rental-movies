@@ -1,1 +1,1 @@
-export { default as useGetQueryParam } from './useGetQueryParam';
+export { default as useAppendQueryStringParams } from './useAppendQueryStringParams';

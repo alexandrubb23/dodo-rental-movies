@@ -1,8 +1,8 @@
-import { URL_QUERY_KEYS } from '../constants';
+import { MOVIES_PAGE_SIZE, URL_QUERY_KEYS } from '../constants';
 import { Movie } from '../models/interfaces';
 import { MoviesParams } from '../models/interfaces/movies';
 import { getAllMovies, getMoviesByGenre } from '../services/moviesService';
-import { getUrl } from '../utils';
+import { getPageNumber, getSearchParamNameFromUrl, paginate } from '../utils';
 
 type ParamGenreType = {
   genre: string;
@@ -21,17 +21,17 @@ type LoadMoviesByGenreType = {
   request: RequestUrlType;
 };
 
-const getSortByFieldName = (url: string) => {
-  const { searchParams } = getUrl(url);
-  return searchParams.get(URL_QUERY_KEYS.SORT_BY);
-};
-
 const loadMoviesFn = async (
   loadMovies: ({ genre, sortByFieldName }: MoviesParams) => Promise<Movie[]>,
   request: RequestUrlType,
   otherProps?: { [key: string]: any }
 ) => {
-  const sortByFieldName = getSortByFieldName(request.url);
+  const { url } = request;
+  const pageNumber = getPageNumber(url);
+  const sortByFieldName = getSearchParamNameFromUrl(
+    url,
+    URL_QUERY_KEYS.SORT_BY
+  );
 
   const movies = await loadMovies({
     sortByFieldName,
@@ -39,7 +39,13 @@ const loadMoviesFn = async (
     ...otherProps,
   });
 
-  return { movies };
+  const paginatedMovies: Movie[] = paginate(
+    movies,
+    pageNumber,
+    MOVIES_PAGE_SIZE
+  );
+
+  return { movies: paginatedMovies, totalMoviesCount: movies.length };
 };
 
 export const loadAllMovies = async ({ request }: RequestType) => {
