@@ -1,4 +1,5 @@
-export { getUrl, getSearchParamNameFromUrl } from './url';
+export { env } from './env';
 export { fakeNetwork } from './fakeNetwork';
-export { setData, getData } from './localForage';
+export { getUrl, getSearchParamNameFromUrl } from './url';
 export { paginate, getPageNumber } from './paginate';
+export { setData, getData } from './localForage';
