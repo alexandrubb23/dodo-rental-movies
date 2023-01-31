@@ -45,7 +45,7 @@ This app is intended to showcase my ability to interpret a brief, solve problems
 
 - [ViteJS](https://vitejs.dev/)
 - [ReactJS](https://reactjs.org/)
-- [React Router Dom v6.8.0](https://reactrouter.com/en/main/hooks/use-search-params)
+- [React Router Dom v6.8.0](https://reactrouter.com/en/main/start/overview)
 
 # Requirements
 
@@ -63,6 +63,12 @@ Install dependencies:
 
 ```bash
 npm install
+```
+
+Create environment variables:
+
+```bash
+cp .env.example .env
 ```
 
 Start the development server:
