@@ -42,7 +42,7 @@ const loadMoviesFn = async (
   const paginatedMovies: Movie[] = paginate(
     movies,
     pageNumber,
-    MOVIES_PAGE_SIZE
+    MOVIES_PAGE_SIZE as number
   );
 
   return { movies: paginatedMovies, totalMoviesCount: movies.length };
