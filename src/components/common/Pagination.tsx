@@ -21,7 +21,7 @@ const Pagination = ({ itemsCount, pageSize }: PaginationInterface) => {
       <ul>
         {pages.map(page => {
           const className = paginationItemStyleClass.getClassName(page);
-          const pageNumber = appendQueryStringPageNumber.append(page);
+          const pageNumber = appendQueryStringPageNumber.appendPageNumber(page);
 
           return (
             <li className={className} key={page}>
