@@ -25,7 +25,7 @@ export const getAllMovies = async ({ sortByFieldName }: GetAllMovies) => {
   await fakeNetwork(`getMovies:${sortByFieldName}`);
 
   // TODO: Can be improved by getting from the cache.
-  const { data } = await http.get('movies.json');
+  const { data } = await http.get('movies');
   let movies = data as Movie[];
 
   const sortedMovies = sortMoviesByFieldName(movies, sortByFieldName);

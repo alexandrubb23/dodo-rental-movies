@@ -9,7 +9,7 @@ export const getGenres = async (): Promise<Genre[]> => {
 
   let genres = await getGenresFromCache();
   if (!genres) {
-    const { data } = await http.get('genres.json');
+    const { data } = await http.get('genres');
     genres = data as Genre[];
   }
 
