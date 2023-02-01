@@ -3,18 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 const useAppendQueryStringParams = () => {
   const [searchParams] = useSearchParams();
 
-  const appendKeyAndValue = (key: string, value: string | number) => {
-    const keyAndValue = `${key}=${value}`;
-    let queryParams = `?${keyAndValue}`;
+  const appendKeyAndValue = (newKey: string, newValue: string) => {
+    for (let key of searchParams.keys())
+      if (key === newKey) searchParams.set(key, newValue);
 
-    for (let currentKey of searchParams.keys()) {
-      if (currentKey !== key)
-        queryParams = `?${currentKey}=${searchParams.get(
-          currentKey
-        )}&${keyAndValue}`;
-    }
+    if (!searchParams.has(newKey)) searchParams.append(newKey, newValue);
 
-    return queryParams;
+    return `?${searchParams.toString()}`;
   };
 
   return { appendKeyAndValue };
