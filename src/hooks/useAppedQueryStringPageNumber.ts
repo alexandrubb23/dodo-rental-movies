@@ -4,13 +4,13 @@ import useAppendQueryStringParams from './useAppendQueryStringParams';
 const useAppedQueryStringPageNumber = () => {
   const appendQueryStringParams = useAppendQueryStringParams();
 
-  const append = (pageNumber: number) => {
+  const appendPageNumber = (pageNumber: number) => {
     const { PAGE_NUMBER } = URL_QUERY_KEYS;
 
-    return `${appendQueryStringParams.appendKey(PAGE_NUMBER)}${pageNumber}`;
+    return appendQueryStringParams.appendKeyAndValue(PAGE_NUMBER, pageNumber);
   };
 
-  return { append };
+  return { appendPageNumber };
 };
 
 export default useAppedQueryStringPageNumber;

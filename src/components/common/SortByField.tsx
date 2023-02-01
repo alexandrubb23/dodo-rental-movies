@@ -13,7 +13,10 @@ const SortByField = ({ data }: UnorderedListDataInterface) => {
   const { SORT_BY } = URL_QUERY_KEYS;
 
   const appendSortByToCurrentUrl = (fieldName: string) => {
-    const to = `${appendQueryStringParams.appendKey(SORT_BY)}${fieldName}`;
+    const to = `${appendQueryStringParams.appendKeyAndValue(
+      SORT_BY,
+      fieldName
+    )}`;
     navigation(to);
   };
 
