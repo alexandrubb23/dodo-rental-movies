@@ -97,7 +97,7 @@ const MoviesRoute = () => {
   return (
     <>
       <HeadingPageTitle title={title} />
-      {hasMoreThanOneMovie && (
+      {hasMoreThanOneMovie && !loading() && (
         <>
           <OrderField
             currentField={orderByField}
