@@ -8,7 +8,7 @@ const movieIncludesGenre = (genre: string) => (movie: Movie) =>
   movie.genres.includes(genre);
 
 const sortMoviesByFieldName = (movies: Movie[]): Movie[] =>
-  orderBy(movies, ['id'], ['desc']);
+  orderBy(movies, ['year'], ['desc']);
 
 export const getAllMovies = async () => {
   await fakeNetwork('getMovies');
