@@ -1,3 +1,3 @@
-export interface UnorderedListDataInterface {
-  data: string[];
+export interface UnorderedListDataInterface<T> {
+  data: T[];
 }

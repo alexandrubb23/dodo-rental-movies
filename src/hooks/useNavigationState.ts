@@ -1,14 +1,14 @@
 import { useNavigation } from 'react-router-dom';
-import { NavigationState } from '../models/types';
+import { NavigationStateType } from '../models/types';
 
 const useNavigationState = () => {
   const navigation = useNavigation();
 
-  const getCurrentState = (stateKey: NavigationState) => {
+  const getCurrentState = (stateKey: NavigationStateType) => {
     return navigation.state === stateKey;
   };
 
-  const states: NavigationState[] = ['idle', 'loading', 'submitting'];
+  const states: NavigationStateType[] = ['idle', 'loading', 'submitting'];
   const stateFunctions = states.reduce(
     (acc, state) => ({
       ...acc,

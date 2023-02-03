@@ -1,52 +1,40 @@
-import sortBy from 'sort-by';
-
+import { fakeNetwork } from '../utils';
 import { getMoviesFromCache, saveMoviesInCache } from '../cache';
 import { Movie } from '../models/interfaces';
-import { MoviesParams } from '../models/interfaces/movies';
-import { GetAllMovies } from '../models/types/movies';
-import { fakeNetwork } from '../utils';
 import http from './httpService';
+import { orderBy } from 'lodash';
 
 const movieIncludesGenre = (genre: string) => (movie: Movie) =>
   movie.genres.includes(genre);
 
-const sortMoviesByFieldName = (
-  movies: Movie[],
-  sortByFieldName?: string | null
-): Movie[] => {
-  if (!sortByFieldName) sortByFieldName = '-id';
+const sortMoviesByFieldName = (movies: Movie[]): Movie[] =>
+  orderBy(movies, ['id'], ['desc']);
 
-  const compareFn = sortBy(sortByFieldName);
-
-  return movies.sort(compareFn);
-};
-
-export const getAllMovies = async ({ sortByFieldName }: GetAllMovies) => {
-  await fakeNetwork(`getMovies:${sortByFieldName}`);
+export const getAllMovies = async () => {
+  await fakeNetwork('getMovies');
 
   // TODO: Can be improved by getting from the cache.
   const { data } = await http.get('movies');
   let movies = data as Movie[];
 
-  const sortedMovies = sortMoviesByFieldName(movies, sortByFieldName);
+  const sortedMovies = sortMoviesByFieldName(movies);
 
   await saveMoviesInCache(sortedMovies);
 
   return sortedMovies;
 };
 
-export const getMoviesByGenre = async ({
-  genre,
-  sortByFieldName,
-}: MoviesParams) => {
+export const getMoviesByGenre = async (genre: string) => {
   await fakeNetwork(`getMovies:${genre}`);
 
   let movies = await getMoviesFromCache();
   if (!movies) {
-    movies = await getAllMovies({ sortByFieldName });
+    movies = await getAllMovies();
   } else {
-    movies = sortMoviesByFieldName(movies, sortByFieldName);
+    movies = sortMoviesByFieldName(movies);
   }
 
-  return movies.filter(movieIncludesGenre(genre));
+  const filteredByGenre = movies.filter(movieIncludesGenre(genre));
+
+  return filteredByGenre;
 };

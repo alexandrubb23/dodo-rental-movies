@@ -1,16 +1,13 @@
 import _ from 'lodash';
-import { NavLink } from 'react-router-dom';
 
-import {
-  useAppedQueryStringPageNumber,
-  usePaginationItemStyleClass,
-} from '../../hooks';
 import { PaginationInterface } from '../../models/interfaces';
 
-const Pagination = ({ itemsCount, pageSize }: PaginationInterface) => {
-  const paginationItemStyleClass = usePaginationItemStyleClass();
-  const appendQueryStringPageNumber = useAppedQueryStringPageNumber();
-
+const Pagination = ({
+  itemsCount,
+  pageSize,
+  currentPage,
+  onPageChange,
+}: PaginationInterface) => {
   const pageCount = Math.ceil(itemsCount / pageSize);
   if (pageCount === 1) return null;
 
@@ -20,12 +17,14 @@ const Pagination = ({ itemsCount, pageSize }: PaginationInterface) => {
     <nav className='pagination'>
       <ul>
         {pages.map(page => {
-          const className = paginationItemStyleClass.getClassName(page);
-          const pageNumber = appendQueryStringPageNumber.appendPageNumber(page);
-
           return (
-            <li className={className} key={page}>
-              <NavLink to={pageNumber}>{page}</NavLink>
+            <li
+              className={
+                page === currentPage ? 'page-item active' : 'page-item'
+              }
+              key={page}
+            >
+              <a onClick={() => onPageChange(page)}>{page}</a>
             </li>
           );
         })}

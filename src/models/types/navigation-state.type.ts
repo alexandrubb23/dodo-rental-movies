@@ -1,3 +1,3 @@
 import { Navigation } from 'react-router-dom';
 
-export type NavigationState = Navigation['state'];
+export type NavigationStateType = Navigation['state'];

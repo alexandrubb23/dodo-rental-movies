@@ -1,7 +1,8 @@
 import { env } from './utils';
 
 export const URL_QUERY_KEYS = {
-  SORT_BY: env('VITE_URL_QUERY_SORT_BY_KEY', 'sortBy'),
+  ORDER_BY: env('VITE_URL_QUERY_ORDER_BY_KEY', 'sortBy'),
+  ORDER_DIRECTION: env('VITE_URL_QUERY_ORDER_DIRECTION_KEY', 'orderDirection'),
   PAGE_NUMBER: env('VITE_URL_QUERY_PAGE_NUMBER_KEY', 'page'),
 } as const;
 

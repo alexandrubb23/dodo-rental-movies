@@ -1,22 +1,22 @@
 import { UnorderedListInterface } from '../../models/interfaces';
 
-const UnorderedList = ({
+const UnorderedList = <T extends {} | string>({
   activeItem,
   data,
   onItemClick,
-}: UnorderedListInterface) => {
+}: UnorderedListInterface<T>) => {
   return (
     <ul>
-      {data.map((item: string) => {
+      {data.map((item: T) => {
         const isActive = item === activeItem ? ' active' : '';
 
         return (
           <li
             className={`text__transition${isActive}`}
-            key={item}
+            key={item as string}
             onClick={() => onItemClick(item)}
           >
-            {item}
+            {item as string}
           </li>
         );
       })}

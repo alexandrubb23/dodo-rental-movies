@@ -1,6 +1,7 @@
 import { UnorderedListDataInterface } from './unordered-list-data.interface';
 
-export interface UnorderedListInterface extends UnorderedListDataInterface {
-  activeItem?: string;
-  onItemClick: (item: string) => void;
+export interface UnorderedListInterface<T>
+  extends UnorderedListDataInterface<T> {
+  activeItem?: T;
+  onItemClick: (item: T) => void;
 }
