@@ -1,8 +1,8 @@
-import sortBy from 'sort-by';
 import { Genre } from '../models/interfaces';
 import http from './httpService';
 import { getGenresFromCache, saveGenresInCache } from '../cache/cachedGenres';
 import { fakeNetwork } from '../utils';
+import { orderBy } from 'lodash';
 
 export const getGenres = async (): Promise<Genre[]> => {
   await fakeNetwork(`getGenres`);
@@ -13,7 +13,7 @@ export const getGenres = async (): Promise<Genre[]> => {
     genres = data as Genre[];
   }
 
-  const sortedGenres = genres.sort(sortBy('title'));
+  const sortedGenres = orderBy(genres, ['title']);
 
   await saveGenresInCache(sortedGenres);
 
