@@ -5,7 +5,7 @@ import {
   OrderDirection,
   OrderField,
 } from '../components/common';
-import { Many, orderBy } from 'lodash';
+import { orderBy } from 'lodash';
 import { Movie, MoviesInterface } from '../models/interfaces';
 import { MOVIES_PAGE_SIZE } from '../constants';
 import { OrderByField } from '../models/types/movies';
@@ -58,8 +58,6 @@ const MoviesRoute = () => {
   ): Movie[] => orderBy(movies, [fieldName], [direction]);
 
   const handleOrderByFieldName = (fieldName: OrderByField) => {
-    const orderDirection: Many<OrderDirectionType> = defaultOrderDirection;
-
     const sortedMovies = sortMovies(paginatedMovies, fieldName, orderDirection);
 
     setOrderByField(fieldName);
