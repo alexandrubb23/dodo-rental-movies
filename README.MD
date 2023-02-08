@@ -18,6 +18,8 @@
 
 This repository is a movie rental dummy platform where users can browse and rent movies. Please be aware that this is a demonstration app, designed to display the proper architecture and file/folder structure of a React application using idiomatic best practices.
 
+[You can observe the app in action here.](http://dodo-vidly-staging.s3-website-us-east-1.amazonaws.com/)
+
 React idiomatic refers to a set of best practices and conventions for writing clean and maintainable code when developing applications using the React JavaScript library. It involves following a consistent code style, using appropriate React patterns, and writing modular and reusable components. The goal of idiomatic React is to make it easier to understand and maintain the codebase, and to ensure a high-quality and scalable application:
 
 - Using functional components and hooks whenever possible, instead of class components.
@@ -61,15 +63,14 @@ git clone https://github.com/alexandrubb23/dodo-rental-movies
 
 Install dependencies:
 
-```bash
+````bash
 npm install
-```
 
 Start the development server:
 
 ```bash
 npm run dev
-```
+````
 
 Access the platform at [http://localhost:5173/](http://localhost:5173/)
 
