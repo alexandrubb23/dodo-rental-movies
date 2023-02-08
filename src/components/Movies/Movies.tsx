@@ -1,5 +1,5 @@
 import { MoviesInterface } from '../../models/interfaces';
-import MoviesList from './MoviesList';
+import MoviesCardList from './MoviesCardList';
 
 const Movies = ({ movies }: MoviesInterface) => {
   if (movies.length === 0) {
@@ -9,7 +9,7 @@ const Movies = ({ movies }: MoviesInterface) => {
   return (
     <>
       <div className='movies-container'>
-        <MoviesList movies={movies} />
+        <MoviesCardList movies={movies} />
       </div>
     </>
   );
