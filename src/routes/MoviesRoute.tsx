@@ -49,7 +49,6 @@ const MoviesRoute = () => {
   }, [initStates]);
 
   const title = genre ? `${upperFirst(genre)} Movies` : 'All Genres Movies';
-  const hasMoreThanOneMovie = movies.length > 1;
 
   const sortMovies = (
     movies: Movie[],
@@ -99,18 +98,20 @@ const MoviesRoute = () => {
   return (
     <>
       <HeadingPageTitle title={title} />
-      <>
-        <OrderField
-          currentField={orderByField}
-          data={sortByFields}
-          onClick={handleOrderByFieldName}
-        />
-        <OrderDirection
-          currentField={orderDirection}
-          data={orderDirections}
-          onClick={handleOrderDirection}
-        />
-      </>
+      {movies.length > 1 && (
+        <>
+          <OrderField
+            currentField={orderByField}
+            data={sortByFields}
+            onClick={handleOrderByFieldName}
+          />
+          <OrderDirection
+            currentField={orderDirection}
+            data={orderDirections}
+            onClick={handleOrderDirection}
+          />
+        </>
+      )}
 
       <Movies movies={paginatedMovies} />
       <Pagination
