@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { LaunchIcon, PlayIcon, StarIcon } from '../../assets/icons';
 import { Movie } from '../../models/interfaces';
 
@@ -13,7 +14,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <h2 className='heading--movie-title'>{movie.title}</h2>
         <div className='movie-actions'>
           <div className='watch-now'>
-            Rent now
+            <NavLink to={`/title/${movie.slug}`}>Rent now</NavLink>
             <LaunchIcon />
           </div>
           <div className='justify--space-around'>

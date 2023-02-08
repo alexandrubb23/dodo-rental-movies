@@ -26,7 +26,7 @@ const defaultOrderDirection = 'desc';
 
 const MoviesRoute = () => {
   const { genre } = useParams();
-  const { loading } = useNavigationState();
+  const navigationState = useNavigationState();
   const { movies } = useLoaderData() as MoviesInterface;
 
   const [pageNumber, setPageNumber] = useState(defaultPageNumber);
@@ -92,33 +92,33 @@ const MoviesRoute = () => {
     setPaginatedMovies(orderedMovies);
   };
 
+  if (navigationState.loading()) {
+    return <div className='loader-dual__ring'></div>;
+  }
+
   return (
     <>
       <HeadingPageTitle title={title} />
-      {hasMoreThanOneMovie && !loading() && (
-        <>
-          <OrderField
-            currentField={orderByField}
-            data={sortByFields}
-            onClick={handleOrderByFieldName}
-          />
-          <OrderDirection
-            currentField={orderDirection}
-            data={orderDirections}
-            onClick={handleOrderDirection}
-          />
-        </>
-      )}
+      <>
+        <OrderField
+          currentField={orderByField}
+          data={sortByFields}
+          onClick={handleOrderByFieldName}
+        />
+        <OrderDirection
+          currentField={orderDirection}
+          data={orderDirections}
+          onClick={handleOrderDirection}
+        />
+      </>
 
       <Movies movies={paginatedMovies} />
-      {!loading() && (
-        <Pagination
-          currentPage={pageNumber}
-          itemsCount={movies.length}
-          onPageChange={handlePageChange}
-          pageSize={MOVIES_PAGE_SIZE}
-        />
-      )}
+      <Pagination
+        currentPage={pageNumber}
+        itemsCount={movies.length}
+        onPageChange={handlePageChange}
+        pageSize={MOVIES_PAGE_SIZE}
+      />
     </>
   );
 };

@@ -616,6 +616,7 @@ sorting-container__list-item .sorting-container ul li:hover,
 }
 
 .pagination .page-item {
+  cursor: pointer;
   border: 1px solid;
   border-color: var(--gre-bg-color);
 }
@@ -628,4 +629,112 @@ sorting-container__list-item .sorting-container ul li:hover,
   background-color: var(--grey-bg-color);
   color: var(--yellor-color);
   border-color: #252525;
+}
+
+/** Movie profile */
+#movie-container {
+  display: flex;
+  flex-direction: column;
+  /* padding: 1rem 2rem; */
+  position: relative;
+  width: 100%;
+}
+
+.movie-container__movie-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.movie-actions .watch-now a:hover {
+  color: rgb(95, 159, 243);
+}
+
+.media-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  justify-content: center;
+  margin-left: 0.2rem;
+}
+
+.media-container div:first-child {
+  margin-bottom: 0.2rem;
+}
+
+.media-container .media-container__box {
+  background-color: #212121;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-container__genres ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.movie-container__genres ul li {
+  border-radius: 15px;
+  border: 1px solid var(--gray20-border-color);
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 5px 15px;
+  text-transform: capitalize;
+}
+
+.movie-container__genres ul li:hover {
+  background-color: var(--grey-bg-color);
+}
+
+.movie-container__crew ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.movie-container__crew ul li {
+  border-bottom: 1px solid var(--gray20-border-color);
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.movie-container__crew ul li a {
+  margin-right: 5px;
+}
+
+.movie-container__crew ul li a:not(:last-child):after {
+  content: '-';
+  margin-left: 5px;
+  color: var(--gray20-border-color);
+}
+
+.movie-container__crew ul li .crew-category {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  margin-right: 0.3rem;
+  font-size: 15px;
+}
+
+.movie-details__movie-info {
+  margin-bottom: 10px;
+}
+
+.react-router {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+}
+
+.react-router h2 {
+  color: #3992ff;
+  margin-bottom: 10px;
 }

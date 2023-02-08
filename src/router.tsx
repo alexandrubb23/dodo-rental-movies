@@ -1,8 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorPage from './components/common/ErrorPage';
-import { loadGenres, loadAllMovies, loadMoviesByGenre } from './loaders';
-import { MoviesRoute, RootRoute } from './routes';
+import {
+  loadGenres,
+  loadMovie,
+  loadAllMovies,
+  loadMoviesByGenre,
+} from './loaders';
+import { MovieRoute, MoviesRoute, RootRoute } from './routes';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +25,11 @@ const router = createBrowserRouter([
         element: <MoviesRoute />,
         loader: loadMoviesByGenre,
         path: 'movies/:genre',
+      },
+      {
+        element: <MovieRoute />,
+        loader: loadMovie,
+        path: 'title/:id',
       },
     ],
   },
