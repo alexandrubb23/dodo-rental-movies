@@ -1,15 +1,14 @@
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useEffect, useCallback, useReducer } from 'react';
+import { orderBy, upperFirst } from 'lodash';
 
 import { HeadingPageTitle, OrderDirection, OrderField } from '../common';
-import { orderBy } from 'lodash';
 import { Movie, MoviesInterface } from '../../models/interfaces';
 import { MOVIES_PAGE_SIZE } from '../../constants';
 import { OrderByField } from '../../models/types/movies';
 import { OrderDirectionType } from '../../models/types';
 import { paginate } from '../../utils';
-import { upperFirst } from 'lodash/fp';
 import { useNavigationState } from '../../hooks';
-import { useState, useEffect, useCallback } from 'react';
 import Movies from './Movies';
 import Pagination from '../common/Pagination';
 
@@ -20,28 +19,42 @@ const defaultPageNumber = 1;
 const defaultOrderByField = 'year';
 const defaultOrderDirection = 'desc';
 
+interface MoviesListState {
+  pageNumber: number;
+  orderByField: OrderByField;
+  orderDirection: OrderDirectionType;
+  paginatedMovies: Movie[];
+}
+
 const MoviesList = ({ movies }: MoviesInterface) => {
   const { genre } = useParams();
   const navigationState = useNavigationState();
 
-  const [pageNumber, setPageNumber] = useState(defaultPageNumber);
-  const [orderByField, setOrderByField] =
-    useState<OrderByField>(defaultOrderByField);
-  const [orderDirection, setOrderDirection] = useState<OrderDirectionType>(
-    defaultOrderDirection
-  );
-  const [paginatedMovies, setPaginatedMovies] = useState<Movie[]>([]);
+  const initialEventState: MoviesListState = {
+    pageNumber: defaultPageNumber,
+    orderByField: defaultOrderByField,
+    orderDirection: defaultOrderDirection,
+    paginatedMovies: movies,
+  };
 
-  const initStates = useCallback(() => {
-    setPageNumber(defaultPageNumber);
-    setOrderByField(defaultOrderByField);
-    setOrderDirection(defaultOrderDirection);
-    setPaginatedMovies(movies);
+  const [moviesListState, setMoviesListState] = useReducer(
+    (prev: MoviesListState, next: Partial<MoviesListState>) => ({
+      ...prev,
+      ...next,
+    }),
+    initialEventState
+  );
+
+  const loadMovies = useCallback(() => {
+    setMoviesListState({
+      paginatedMovies: movies,
+      pageNumber: defaultPageNumber,
+    });
   }, [movies]);
 
   useEffect(() => {
-    initStates();
-  }, [initStates]);
+    loadMovies();
+  }, [loadMovies]);
 
   const title = genre ? `${upperFirst(genre)} Movies` : 'All Genres Movies';
 
@@ -52,21 +65,26 @@ const MoviesList = ({ movies }: MoviesInterface) => {
   ): Movie[] => orderBy(movies, [fieldName], [direction]);
 
   const handleOrderByFieldName = (fieldName: OrderByField) => {
-    const sortedMovies = sortMovies(paginatedMovies, fieldName, orderDirection);
+    const sortedMovies = sortMovies(
+      moviesListState.paginatedMovies,
+      fieldName,
+      moviesListState.orderDirection
+    );
 
-    setOrderByField(fieldName);
-    setPaginatedMovies(sortedMovies);
+    setMoviesListState({
+      orderByField: fieldName,
+      paginatedMovies: sortedMovies,
+    });
   };
 
   const handleOrderDirection = (orderDirection: OrderDirectionType) => {
     const sortedMovies = sortMovies(
-      paginatedMovies,
-      orderByField,
+      moviesListState.paginatedMovies,
+      moviesListState.orderByField,
       orderDirection
     );
 
-    setOrderDirection(orderDirection);
-    setPaginatedMovies(sortedMovies);
+    setMoviesListState({ orderDirection, paginatedMovies: sortedMovies });
   };
 
   const handlePageChange = (pageNumber: number) => {
@@ -78,12 +96,11 @@ const MoviesList = ({ movies }: MoviesInterface) => {
 
     const orderedMovies = sortMovies(
       paginatedMovies,
-      orderByField,
-      orderDirection
+      moviesListState.orderByField,
+      moviesListState.orderDirection
     );
 
-    setPageNumber(pageNumber);
-    setPaginatedMovies(orderedMovies);
+    setMoviesListState({ pageNumber, paginatedMovies: orderedMovies });
   };
 
   if (navigationState.loading()) {
@@ -96,21 +113,21 @@ const MoviesList = ({ movies }: MoviesInterface) => {
       {movies.length > 1 && (
         <>
           <OrderField
-            currentField={orderByField}
+            currentField={moviesListState.orderByField}
             data={sortByFields}
             onClick={handleOrderByFieldName}
           />
           <OrderDirection
-            currentField={orderDirection}
+            currentField={moviesListState.orderDirection}
             data={orderDirections}
             onClick={handleOrderDirection}
           />
         </>
       )}
 
-      <Movies movies={paginatedMovies} />
+      <Movies movies={moviesListState.paginatedMovies} />
       <Pagination
-        currentPage={pageNumber}
+        currentPage={moviesListState.pageNumber}
         itemsCount={movies.length}
         onPageChange={handlePageChange}
         pageSize={MOVIES_PAGE_SIZE}
