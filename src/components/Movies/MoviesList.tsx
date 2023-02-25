@@ -46,10 +46,7 @@ const MoviesList = ({ movies }: MoviesInterface) => {
   );
 
   const loadMovies = useCallback(() => {
-    setMoviesListState({
-      paginatedMovies: movies,
-      pageNumber: defaultPageNumber,
-    });
+    setMoviesListState({ ...initialMoviesState });
   }, [movies]);
 
   useEffect(() => {
