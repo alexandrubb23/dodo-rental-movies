@@ -30,7 +30,7 @@ const MoviesList = ({ movies }: MoviesInterface) => {
   const { genre } = useParams();
   const navigationState = useNavigationState();
 
-  const initialEventState: MoviesListState = {
+  const initialMoviesState: MoviesListState = {
     pageNumber: defaultPageNumber,
     orderByField: defaultOrderByField,
     orderDirection: defaultOrderDirection,
@@ -42,7 +42,7 @@ const MoviesList = ({ movies }: MoviesInterface) => {
       ...prev,
       ...next,
     }),
-    initialEventState
+    initialMoviesState
   );
 
   const loadMovies = useCallback(() => {
